@@ -19,6 +19,11 @@ Vagrant.configure("2") do |config|
   	vm.memory = $cfg['memory']
 	  vm.cpus = $cfg['cpu_cores']
   end
+
+  #config.vm.network "forwarded_port", guest: 80, host: 8081
+  #config.vm.network "private_network", ip: "192.168.60.2"
+
+  #config.vm.synced_folder 'html', '/var/www/html/'
   
   config.vm.provision "shell", inline: <<-'SHELL'
     apt-get update && apt-get upgrade -y
@@ -31,8 +36,18 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.network "forwarded_port", guest: 80, host: 8081
-  #config.vm.network "private_network", ip: "192.168.60.2"
+  puts "Installing tools"
+  config.vm.provision "shell", inline: <<-SHELL
+    tee -a ~/.bashrc > /dev/null <<EOT
+      alias l='ls -lh'
+      alias ll='ls -lha'
+    EOT
+    yum install -y git vim htop
+  SHELL
 
-  #config.vm.synced_folder 'html', '/var/www/html/'
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --all
+  SHELL
+
 end
