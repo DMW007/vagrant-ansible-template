@@ -26,10 +26,11 @@ If you're on Windows, it's not possible to use Ansible since it doesn't support 
 
 ## Getting started
 1. Clone this project: `git clone https://github.com/DMW007/vagrant-ansible-template.git`
-2. Customize it to fit your needs like creating additional provision scripts, add Ansible playbooks and other things you need
-3. To create and provision the machine, execute `vagrant up` in the root dictionary
-4. If you want to just re-provision the vm, run `vagrant up --provision`
-5. When you need or want to re-create the entire vm from scratch, execute `vagrant destroy; vagrant up`. To skip the confirmation, use `vagrant destroy -f`
+2. Copy the example var file and adjust it if needed: `cp vars-example.yml vars.yml`
+3. Customize it to fit your needs like creating additional provision scripts, add Ansible playbooks and other things you need
+4. To create and provision the machine, execute `vagrant up` in the root dictionary
+5. If you want to just re-provision the vm, run `vagrant up --provision`
+6. When you need or want to re-create the entire vm from scratch, execute `vagrant destroy; vagrant up`. To skip the confirmation, use `vagrant destroy -f`
 
 ## Env variables
 - `VARS_FILE` let you specify the yaml file containing all configuration variables. If not set, the default is `vars.yml`.

@@ -1,0 +1,12 @@
+name: vagrant-template
+box: ubuntu/focal64
+memory: 1024
+cpu_cores: 2
+
+proxy_enabled: false
+proxy_cert_host: ""
+
+ansible:
+  enabled: true
+  playbook: ansible/playbook.yml
+  verbose_level: vv
