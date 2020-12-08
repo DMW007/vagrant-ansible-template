@@ -19,6 +19,11 @@ You need to install the following dependencies:
 
 Additionally, you need to enable the virtualization features in the bios/uefi to allow VirtualBox the execution of VMs. Depending on the software you want to deploy, keep in mind that the machine need to have enough ressources. Mostly RAM is important. At least 8GB, the more the better.
 
+If you're on Windows, it's not possible to use Ansible since it doesn't support Windows. You have three options here:
+1. [Provision inside the target VM, which means installing Ansible inside it](https://gist.github.com/tknerr/291b765df23845e56a29)
+2. [Install a small control VM with Ansible (usefull when having multiple VMs)](https://gist.github.com/tknerr/291b765df23845e56a29)
+3. Use WSL (but not v2, since it seems to conflict with other hypervisors)
+
 ## Getting started
 1. Clone this project: `git clone https://github.com/DMW007/vagrant-ansible-template.git`
 2. Customize it to fit your needs like creating additional provision scripts, add Ansible playbooks and other things you need
