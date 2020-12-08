@@ -4,3 +4,5 @@
   tasks:
     - name: Hello
       shell: whoami
+    - name: How much memory do I have in my config?
+      shell: "echo {{ memory }}"
