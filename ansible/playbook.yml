@@ -1,0 +1,6 @@
+- name: Playbook
+  hosts: all
+
+  tasks:
+    - name: Hello
+      shell: whoami
