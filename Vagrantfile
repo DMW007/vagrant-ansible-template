@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
   if ($cfg.include? 'ansible') && ($cfg['ansible']['enabled'])
     $ansible_cfg = $cfg['ansible']
     config.vm.provision "ansible" do |ansible|  
-      ansible.verbose = "v"
+      ansible.verbose = $ansible_cfg['verbose_level']
       ansible.playbook = $ansible_cfg['playbook']
       $vars_file = ENV['ANSIBLE_VARS_FILE'] || $config_file
       ansible.extra_vars = "@" + $vars_file
